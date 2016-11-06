@@ -28,31 +28,4 @@ class WeataiAPI < Sinatra::Base
       halt 404, "Instant weather not found"
     end
   end
-=begin
-  get "/#{API_VER}/group/:fb_group_id/feed/?" do
-    group_id = params[:fb_group_id]
-    begin
-      group = FaceGroup::Group.find(id: group_id)
-
-      content_type 'application/json'
-      {
-        feed: group.feed.postings.map do |post|
-          posting = { posting_id: post.id }
-          posting[:message] = post.message if post.message
-          if post.attachment
-            posting[:attachment] = {
-              title: post.attachment.title,
-              url: post.attachment.url,
-              description: post.attachment.description
-            }
-          end
-
-          { posting: posting }
-        end
-      }.to_json
-    rescue
-      halt 404, "Cannot group (id: #{group_id}) feed"
-    end
-  end
-=end
 end
