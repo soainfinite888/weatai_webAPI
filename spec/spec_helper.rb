@@ -11,14 +11,18 @@ require 'vcr'
 require 'webmock'
 
 #require(others)
+
 require 'http'
 require 'yaml'
 require 'active_support/all'
 require 'active_support/core_ext/hash'
+require 'rubygems'
+require 'sinatra'
+
 
 
 #load web app. for testing
-require_relative '../app' 
+require_relative '../app.rb' 
 
 #load useful web app. test methods
 include Rack::Test::Methods

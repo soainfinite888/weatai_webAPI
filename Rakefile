@@ -1,3 +1,13 @@
+require 'rake/testtask'
+
+#Rake::TestTask is object creates a test task that can run multiple testing files.
+Rake::TestTask.new(:spec) do |t|
+  t.pattern ='spec/*_spec.rb'
+  t.warning = false
+
+end
+
+
 desc 'run tests' 
 task :spec do 
   sh 'ruby spec/weatai_spec.rb' 
