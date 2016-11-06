@@ -24,16 +24,22 @@ describe 'CWB routes' do
 
 #......................VCR things........................
 
+  describe '' do
+
  # test 01
-  it 
-  end
-
-  # test 02
-  it 
-  end
-
-  #test 03
-  it
+  it 'HAPPY: should get data' do 
+     #http 200 OK
+      last_response.status.must_equal 200
+      #last_response.content_type.must_equal 'application/yaml'
+      #group_data['group_id'].length.must_be :>, 0
+      #group_data['name'].length.must_be :>, 0
     end
+  
+  it 'SAD: should not found data' do
+      #http 404 not find
+      last_response.status.must_equal 404
+      #last_response.body.must_include [fix]
+    end
+
   end
 end

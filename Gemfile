@@ -13,7 +13,7 @@ group :test do
   gem 'minitest' 
   gem 'minitest-rg' 
 
-  gem 'rake-test'  #testing methods for web app.
+  gem 'rack-test' #testing methods for web app.
   gem 'rake'
 
   gem 'vcr'
