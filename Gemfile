@@ -1,12 +1,17 @@
 source 'https://rubygems.org'
+gem 'sinatra'
+gem 'puma'
 gem 'http'
-#gem 'yaml'/
-#gem 'activesupport -v 4.2.6'/
 gem 'activesupport'
 gem 'simplecov'
 gem 'flog'
 gem 'flay'
 gem 'rubocop'
+gem 'weatai'
+
+group :develop, :test do
+	gem 'pry-byebug'
+end
 
 #needed for our test deployment environment
 group :test do 
