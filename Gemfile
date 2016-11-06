@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
-#gem 'sinatra'
 gem 'sinatra', '2.0.0.beta2'
-gem 'econfig'
 gem 'puma'
+gem 'econfig'
 gem 'http'
 gem 'activesupport'
 gem 'simplecov'
@@ -11,7 +10,7 @@ gem 'flay'
 gem 'rubocop'
 gem 'weatai'
 
-group :develop, :test do
+group :development, :test do
 	gem 'pry-byebug'
 end
 
