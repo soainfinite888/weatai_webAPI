@@ -22,7 +22,7 @@ require 'sinatra'
 
 
 #load web app. for testing
-require_relative '../app.rb' 
+require_relative '../app' 
 
 #load useful web app. test methods
 include Rack::Test::Methods
@@ -36,7 +36,9 @@ FIXTURES_FOLDER = 'spec/fixtures'
 CASSETTES_FOLDER = #{FIXTURES_FOLDER}/cassettes
 GROUPS_CASSETTE = 'groups' 
 
-
+#VCR things 
 VCR.configure do |c|
-  #?????!!!!!
+  c.cassette_library_dir = 'cassettes'
+  c.hook_into :webmock
+
 end

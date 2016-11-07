@@ -9,6 +9,7 @@ gem 'flog'
 gem 'flay'
 gem 'rubocop'
 gem 'weatai'
+gem 'json'
 
 group :development, :test do
 	gem 'pry-byebug'

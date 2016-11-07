@@ -11,9 +11,7 @@ describe 'API basics' do
 
   # test 02
   it 'should successfully find the root route' do
-    get '/'
-    last_response.body.must_include 'Group'
-    
+    get '/'    
     #200 OK Standard response for successful HTTP requests.
     last_response.status.must_equal 200
     

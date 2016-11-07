@@ -1,34 +1,44 @@
 require 'rake/testtask'
 
+#[???]
+task :default do
+  puts `rake -T`
+end
+
+
 #Rake::TestTask is object creates a test task that can run multiple testing files.
+
 Rake::TestTask.new(:spec) do |t|
   t.pattern ='spec/*_spec.rb'
   t.warning = false
 
 end
 
-
-desc 'run tests' 
-task :spec do 
-  sh 'ruby spec/weatai_spec.rb' 
+desc 'delete cassette fixtures'
+task :wipe do
+  sh 'rm spec/fixtures/cassettes/*.yml' do |ok, _|
+    puts(ok ? 'Cassettes deleted' : 'No casseettes found')
+  end
 end
 
-namespace :quality do 
+
+#quality test
+namespace :quality do
+  CODE = 'app.rb'
+
   desc 'run all quality checks' 
   task all: [:rubocop, :flog, :flay]
 
-  desc 'run quality:flog in lib'
-  task :flog do 
-    sh 'flog lib/' 
+  task :flog do
+    sh "#{CODE}"
   end
 
-  desc 'run quality:flay in lib'
-  task :flay do 
-    sh 'flay lib/' 
+  task :flay do
+    sh "#{CODE}"
   end
 
-  desc 'run quality:rubocop in lib'
-  task :rubocop do 
-    sh 'rubocop lib/' 
-  end 
+  task :rubocop do
+    sh 'rubocop'
+  end
+
 end

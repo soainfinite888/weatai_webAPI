@@ -113,6 +113,7 @@ DEPENDENCIES
   flay
   flog
   http
+  json
   minitest
   minitest-rg
   pry-byebug
