@@ -59,7 +59,7 @@ API_VER = 'api/v0.1'
   end
   
   it 'SAD: should not found data' do
-    get "api/#{API_VER}/C_weather/#{SAD_DATA_ID}"
+    get "#{API_VER}/C_weather/#{SAD_DATA_ID}"
     #http 404 not find
     last_response.status.must_equal 404
     
