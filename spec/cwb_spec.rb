@@ -43,7 +43,7 @@ API_VER = 'api/v0.1'
     get '/'
     #http 200 OK
     last_response.status.must_equal 200
-    puts last_response.body
+    #puts last_response.body
   end 
 
   it 'HAPPY: should get data' do
