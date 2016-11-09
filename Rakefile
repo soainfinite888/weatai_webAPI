@@ -16,7 +16,8 @@ end
 
 desc 'delete cassette fixtures'
 task :wipe do
-  sh 'rm spec/fixtures/cassettes/*.yml' do |ok, _|
+  #sh 'rm spec/fixtures/cassettes/*.yml' do |ok, _|
+  sh 'rm cassettes/*.yml' do |ok, _|
     puts(ok ? 'Cassettes deleted' : 'No casseettes found')
   end
 end
