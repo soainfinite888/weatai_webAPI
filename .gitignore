@@ -1,3 +1,9 @@
+#.gitignore
+
+config/app.yml 
+db/*.*
+
+
 *.gem
 *.rbc
 /.config
