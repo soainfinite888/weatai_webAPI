@@ -28,4 +28,17 @@ class WeataiAPI < Sinatra::Base
       halt 404, "Instant weather not found"
     end
   end
+
+
+  get "/#{API_VER}/C_weather/:station/?" do
+    begin
+      
+      weather = CWB::Weather.local(:station)
+      
+      content_type 'application/json'
+      { instant_weather: weather.instant_weather }.to_json
+    rescue
+      halt 404, "Instant weather not found"
+    end
+  end
 end
