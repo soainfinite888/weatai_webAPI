@@ -26,6 +26,23 @@ class WeataiAPI < Sinatra::Base
     rescue
       halt 404, "Instant weather not found"
     end
+
+  post "/#{API_VER}/C_weather/?" do
+=begin
+    begin
+      time = #data's time 
+      city = #station's city
+      township = #station's township
+      temperature =  #station's temperature
+      rainfall = #station's rainfall雨量
+      humidity = #relative humidity(HUMD)相對濕度
+      AirQuality =
+      
+    rescue
+      halt 404, "Instant weather not found"
+    end
+=end
+
   end
 end
 
