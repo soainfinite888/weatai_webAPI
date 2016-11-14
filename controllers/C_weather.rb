@@ -7,9 +7,9 @@ class WeataiAPI < Sinatra::Base
   #get all station weather data
   get "/#{API_VER}/C_weather/?" do
     begin
-      weather = CWB::Weather.find(dataid: 'O-A0003-001')#這邊呼叫方式要改！
+      weather = CWB::INSTANT.instant
       content_type 'application/json'
-      { instant_weather: weather.instant_weather }.to_json
+      { instant_weather: weather}.to_json
     rescue
       halt 404, "Instant weather not found"
     end
@@ -18,17 +18,20 @@ class WeataiAPI < Sinatra::Base
   #get only one station weather data 
   get "/#{API_VER}/C_weather/:station/?" do
     begin
-      
-      weather = CWB::Weather.local(:station)#這邊呼叫方式要改！
-      
+      weather = CWB::INSTANT.local(:station)
       content_type 'application/json'
-      { instant_weather: weather.instant_weather }.to_json
+      { instant_weather: weather}.to_json
     rescue
       halt 404, "Instant weather not found"
     end
 
   post "/#{API_VER}/C_weather/?" do
+      weather = CWB::INSTANT.local(:station)
+      content_type 'application/json'
+      { instant_weather: weather}.to_json
+
 =begin
+
     begin
       time = #data's time 
       city = #station's city
@@ -37,11 +40,12 @@ class WeataiAPI < Sinatra::Base
       rainfall = #station's rainfall雨量
       humidity = #relative humidity(HUMD)相對濕度
       AirQuality =
-      
+=end
     rescue
       halt 404, "Instant weather not found"
     end
-=end
+
+
 
   end
 end
