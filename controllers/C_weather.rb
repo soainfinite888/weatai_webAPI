@@ -1,8 +1,51 @@
 # frozen_string_literal: true
 
 # Posting routes
-class FaceGroupAPI < Sinatra::Base
+class WeataiAPI < Sinatra::Base
   include WordMagic
+
+  #get all station weather data
+  get "/#{API_VER}/C_weather/?" do
+    begin
+      weather = CWB::Weather.find(dataid: 'O-A0003-001')#這邊呼叫方式要改！
+      content_type 'application/json'
+      { instant_weather: weather.instant_weather }.to_json
+    rescue
+      halt 404, "Instant weather not found"
+    end
+  end
+
+  #get only one station weather data 
+  get "/#{API_VER}/C_weather/:station/?" do
+    begin
+      
+      weather = CWB::Weather.local(:station)#這邊呼叫方式要改！
+      
+      content_type 'application/json'
+      { instant_weather: weather.instant_weather }.to_json
+    rescue
+      halt 404, "Instant weather not found"
+    end
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   # TODO: allow search terms/tags
   get "/#{API_VER}/group/:id/posting/?" do
