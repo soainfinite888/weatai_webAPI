@@ -17,15 +17,18 @@ configure :test do
 end
 
 
-#Configurations for all environments
-#Enable logging in Sinatra
-#Connect to database
-configure do
-  DB = Sequel.connect(ENV['DATABASE_URL'])
-end
+
 
 #Hirb 
 configure :development, :production do 
   require 'hirb'
   Hirb.enable
+end
+
+
+#Configurations for all environments
+#Enable logging in Sinatra
+#Connect to database
+configure do
+  DB = Sequel.connect(ENV['DATABASE_URL'])
 end

@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-# Posting routes
+# routes
 class WeataiAPI < Sinatra::Base
-  include WordMagic
 
   #get all station weather data
   get "/#{API_VER}/C_weather/?" do
