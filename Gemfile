@@ -12,7 +12,7 @@ gem 'rubocop'
 gem 'weatai'
 gem 'json'
 gem 'sequel'  #sequel: Our object-relational mapper
-
+gem 'rake'
 
 group :development, :test do
 	gem 'sqlite3'  #sqlite3: Local file-based database server
