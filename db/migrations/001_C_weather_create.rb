@@ -13,6 +13,7 @@ Sequel.migration do
       String :MIN_10 #10min rainfall十分鐘雨量
       String :rainfall #station's rainfall(day)雨量
       String :AirQuality #AirQuality 空氣品質(環保署)
+      String :Status 
     end
   end
 end
