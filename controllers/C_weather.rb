@@ -43,7 +43,10 @@ class WeataiAPI < Sinatra::Base
     rescue
       halt 404, "Instant weather not found"
     end
+ 
 
+   put "/#{API_VER}/C_weather/?" do
+   
 
 
   end
