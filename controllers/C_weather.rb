@@ -23,124 +23,44 @@ class WeataiAPI < Sinatra::Base
     rescue
       halt 404, "Instant weather not found"
     end
-
-  post "/#{API_VER}/C_weather/?" do
+  #post function
+  post "/#{API_VER}/C_weather/:station/?" do
+    begin
       weather = CWB::INSTANT.local(:station)
       content_type 'application/json'
-      { instant_weather: weather}.to_json
-
-=begin
-
-    begin
-      time = #data's time 
-      city = #station's city
-      township = #station's township
-      temperature =  #station's temperature
-      rainfall = #station's rainfall雨量
-      humidity = #relative humidity(HUMD)相對濕度
-      AirQuality =
-
-    rescue
-      halt 404, "Instant weather not found"
-    end
- 
- 
-
-   put "/#{API_VER}/C_weather/?" do
- 
-=end
-
-
-  end
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  # TODO: allow search terms/tags
-  get "/#{API_VER}/group/:id/posting/?" do
-    group_id = params[:id]
-    search_terms = reasonable_search_terms(params[:search])
-    begin
-      group = Group.find(id: group_id)
-      halt 400, "FB Group (id: #{group_id}) not found" unless group
-
-      relevant_postings =
-        if search_terms&.any?
-          where_clause = search_terms.map do |term|
-            Sequel.ilike(:message, "%#{term}%")
-          end.inject(&:|)
-
-          Posting.where(where_clause).all
-        else
-          group.postings
-        end
-
-      postings = {
-        postings: relevant_postings.map do |post|
-          posting = { posting_id: post.id, group_id: group_id }
-          posting[:message] = post.message if post.message
-          posting[:name] = post.name if post.name
-          if post.attachment_title
-            posting[:attachment] = {
-              title: post.attachment_title,
-              url: post.attachment_url,
-              description: post.attachment_description
-            }
-          end
-          { posting: posting }
-        end
-      }
-
-      content_type 'application/json'
-      postings.to_json
+      {instant_weather: weather}.to_json
     rescue
       content_type 'text/plain'
-      halt 500, "FB Group (id: #{group_id}) could not be processed"
+      halt 400, "weather could not be found"
     end
-  end
 
-  put "/#{API_VER}/posting/:id" do
+  #put function
+  put "/#{API_VER}/C_weather/:station/?"
     begin
-      posting_id = params[:id]
-      posting = Posting.find(id: posting_id)
-      halt 400, "Posting (id: #{posting_id}) is not stored" unless posting
-      updated_posting = FaceGroup::Posting.find(id: posting.fb_id)
-      if updated_posting.nil?
-        halt 404, "Posting (id: #{posting_id}) not found on Facebook"
-      end
+      station = params[:station]  #station name
+      weather = CWB::INSTANT.local(:station)
+      content_type 'application/json'
+      {instant_weather: weather}.to_json
+     
 
-      posting.update(
-        created_time:   updated_posting.created_time,
-        updated_time:   updated_posting.updated_time,
-        message:        updated_posting.message,
-        name:           updated_posting.name,
-        attachment_title:         updated_posting.attachment&.title,
-        attachment_description:   updated_posting.attachment&.description,
-        attachment_url:           updated_posting.attachment&.url
+      updated_weather = 
+
+      weather.update(
+        :time #data's time 
+        :city  #station's city
+        :township  #station's township
+        :temperature  #station's temperature
+        :humidity #relative humidity(HUMD)相對濕度
+        :MIN_10 #10min rainfall十分鐘雨量
+        :rainfall #station's rainfall(day)雨量
+        :AirQuality #AirQuality 空氣品質(環保署)
       )
-      posting.save
-
       content_type 'text/plain'
       body ''
     rescue
       content_type 'text/plain'
-      halt 500, "Cannot update posting (id: #{posting_id})"
+      halt 500, "Cannot update weather (#{station})"
     end
   end
 end
+
