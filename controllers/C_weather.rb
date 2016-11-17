@@ -39,14 +39,16 @@ class WeataiAPI < Sinatra::Base
       rainfall = #station's rainfall雨量
       humidity = #relative humidity(HUMD)相對濕度
       AirQuality =
-=end
+
     rescue
       halt 404, "Instant weather not found"
     end
  
+ 
 
    put "/#{API_VER}/C_weather/?" do
-   
+ 
+=end
 
 
   end
