@@ -10,7 +10,7 @@ gem 'flog'
 gem 'flay'
 gem 'rubocop'
 gem 'weatai'
-gem 'json'
+gem 'json' #an thing to fix
 gem 'sequel'  #sequel: Our object-relational mapper
 gem 'rake'
 

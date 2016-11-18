@@ -11,7 +11,11 @@ class WeataiAPI < Sinatra::Base
   configure do
     Econfig.env = settings.environment.to_s
     Econfig.root = File.expand_path('..',settings.root)
-    CWB::CWBApi.config.update(key: config.AUTH_KEY) #key update
+    CWB::CWBApi.config.update(dataid1: config.DATA_ID1,
+                              dataid2: config.DATA_ID2,
+                              key:     config.AUTH_KEY, 
+                              format:  config.FORMAT,
+                              token:   config.TOKEN) #key update
   end
   
   get '/?' do
