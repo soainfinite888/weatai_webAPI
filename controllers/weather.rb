@@ -34,26 +34,25 @@ class WeataiAPI < Sinatra::Base
       if weather.nil? == true 
         halt 404, "Instant weather not found"  
       end  
-
       #DB[:groups].delete  #清空table
 
       weather.each do |key, value|
       Weather.create(
-        station:     value['station'],
-        city:        value['city'],                        #station's city
-        township:    value['town'],                        #station's township
-        temperature: value['TEMP'],                        #station's temperature
-        humidity:    value['HUMD'] ,                       #relative humidity(HUMD)相對濕度
-        MIN_10:      value['MIN_10'],                      #10min rainfall十分鐘雨量
+        station:     value['Station'],
+        city:        value['City'],                        #station's city
+        township:    value['Town'],                        #station's township
+        temperature: value['Temp'],                        #station's temperature
+        humidity:    value['Humd'] ,                       #relative humidity(HUMD)相對濕度
+        MIN_10:      value['Last 10 minutes Rainfall'],    #10min rainfall十分鐘雨量
         rainfall:    value['Daily Accumulated Rainfall'],  #station's rainfall(day)雨量
         AirQuality:  value['PSI'],                         #AirQuality 空氣品質(環保署)
         Status:      value['Status'],                      #AirStatus
-        time:        value['time'],                        #data's time 
+        time:        value['Time'],                        #data's time 
       )
       end
 
       content_type 'text/plain'
-      "Post Instant weather success"
+      "Post Instant weather success(save to database)"
 
     rescue
       content_type 'text/plain'
