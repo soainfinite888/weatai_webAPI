@@ -3,9 +3,9 @@ require 'sequel'
 
 Sequel.migration do 
   change do
-    create_table(:C_weather) do 
-      primary_key :station  #station's name觀測站名稱
-      String :time #data's time 
+    create_table(:weathers) do #create weather's'
+      primary_key :stationID  #station's name觀測站名稱
+      String :station
       String :city  #station's city
       String :township  #station's township
       String :temperature  #station's temperature
@@ -14,6 +14,7 @@ Sequel.migration do
       String :rainfall #station's rainfall(day)雨量
       String :AirQuality #AirQuality 空氣品質(環保署)
       String :Status 
+      String :time #data's time 
     end
   end
 end
