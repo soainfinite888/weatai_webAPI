@@ -29,6 +29,7 @@ class WeataiAPI < Sinatra::Base
       content_type 'application/json'
       { #id:         weather., 
         station:    weather.station, 
+        stationName:weather.stationName
         city:       weather.city,                       #station's city
         township:   weather.township,                   #station's township
         temperature:weather.temperature,                #station's temperature
@@ -84,6 +85,7 @@ class WeataiAPI < Sinatra::Base
       Weather.create(
         #stationID:   value['Station'],
         station:     i,
+        stationName: value['Station'],
         city:        value['City'],                        #station's city
         township:    value['Town'],                        #station's township
         temperature: value['Temp'],                        #station's temperature
