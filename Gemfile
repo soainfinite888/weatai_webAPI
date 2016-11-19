@@ -9,8 +9,8 @@ gem 'simplecov'
 gem 'flog'
 gem 'flay'
 gem 'rubocop'
-gem 'weatai'
-gem 'json' #an thing to fix
+gem 'weatai', '0.1.5'
+gem 'json'
 gem 'sequel'  #sequel: Our object-relational mapper
 gem 'rake'
 

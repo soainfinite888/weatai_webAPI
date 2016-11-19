@@ -15,7 +15,7 @@ class WeataiAPI < Sinatra::Base
                               dataid2: config.DATA_ID2,
                               key:     config.AUTH_KEY, 
                               format:  config.FORMAT,
-                              token:   config.TOKEN) #key update
+                              token:   config.TOKEN)  #key update
   end
   
   get '/?' do
