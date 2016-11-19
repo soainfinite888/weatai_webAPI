@@ -4,8 +4,8 @@ require 'sequel'
 Sequel.migration do 
   change do
     create_table(:weathers) do #create weather's'
-      primary_key :stationID  #station's name觀測站名稱
-      String :station
+      primary_key :stationID# :primary_key=>true #station's ID
+      String :station #station's name觀測站名稱
       String :city  #station's city
       String :township  #station's township
       String :temperature  #station's temperature

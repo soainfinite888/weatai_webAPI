@@ -74,9 +74,14 @@ class WeataiAPI < Sinatra::Base
         halt 404, "Instant weather not found"  
       end  
       #DB[:groups].delete  #清空table
+      DB[:weathers].delete
+      
+      #Weather.delete_all
+      
 
       weather.each do |key, value|
       Weather.create(
+        #stationID:   value['Station'],
         station:     value['Station'],
         city:        value['City'],                        #station's city
         township:    value['Town'],                        #station's township
@@ -97,5 +102,43 @@ class WeataiAPI < Sinatra::Base
       content_type 'text/plain'
       halt 500, "Cannot update Instant weather"
     end
+=begin
+  
+
+  
+
+    put "/#{API_VER}/weather/?" do
+    begin
+      #posting_id = params[:id]
+      #posting = Posting.find(id: posting_id)
+      #halt 400, "Posting (id: #{posting_id}) is not stored" unless posting
+      #updated_posting = FaceGroup::Posting.find(id: posting.fb_id)
+      #if updated_posting.nil?
+       # halt 404, "Posting (id: #{posting_id}) not found on Facebook"
+      #end
+
+      weather = CWB::INSTANT.instant
+      weather.each do |key, value|
+      weatrer.update(
+        station:     value['Station'],
+        city:        value['City'],                        #station's city
+        township:    value['Town'],                        #station's township
+        temperature: value['Temp'],                        #station's temperature
+        humidity:    value['Humd'] ,                       #relative humidity(HUMD)相對濕度
+        MIN_10:      value['Last 10 minutes Rainfall'],    #10min rainfall十分鐘雨量
+        rainfall:    value['Daily Accumulated Rainfall'],  #station's rainfall(day)雨量
+        AirQuality:  value['PSI'],                         #AirQuality 空氣品質(環保署)
+        Status:      value['Status'],                      #AirStatus
+        time:        value['Time'],                        #data's time 
+      )
+      weather.save
+
+      content_type 'text/plain'
+      body ''
+    rescue
+      content_type 'text/plain'
+      halt 500, "Cannot update weather"
+    end
+=end    
   end
 end
