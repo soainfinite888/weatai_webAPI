@@ -5,13 +5,21 @@ class WeataiAPI < Sinatra::Base
 
   #get all station weather data(from database)
   get "/#{API_VER}/weather/?" do
+=begin
     begin
-      weathers = Weather.all
+      weathers = FindAllWeathers.call
       content_type 'application/json'
       AllWeatherRepresenter.new(weathers: weathers).to_json
     rescue
       content_type 'text/plain'
       halt 404, "Instant weather not found"
+    end
+=end
+    result = FindAllWeathers.call
+    if result.success?
+      AllWeatherRepresenter.new(weathers: result).to_json
+    else
+      ErrorRepresenter.new(result.value).to_status_response
     end
   end
 
