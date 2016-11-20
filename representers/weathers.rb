@@ -1,3 +1,4 @@
+
 class AllWeatherRepresenter
   def initialize(weathers)
     @weathers = weathers
@@ -7,3 +8,10 @@ class AllWeatherRepresenter
     {weathers: @weathers}.to_json
   end
 end
+=begin
+class AllWeatherRepresenter < Roar::Decorator
+  include Roar::JSON
+
+  collection :weathers
+end
+=end
