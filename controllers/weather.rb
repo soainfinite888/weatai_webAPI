@@ -6,7 +6,7 @@ class WeataiAPI < Sinatra::Base
   #get all station weather data(from database)
   get "/#{API_VER}/weather/?" do
     begin
-      weather = CWB::INSTANT.instant
+      weather = Weather.all
       content_type 'application/json'
       { instant_weather: weather}.to_json
 
