@@ -13,6 +13,8 @@ gem 'weatai', '0.1.5'
 gem 'json'
 gem 'sequel'  #sequel: Our object-relational mapper
 gem 'rake'
+gem 'roar'
+gem 'multi_json'
 
 group :development, :test do
 	gem 'sqlite3'  #sqlite3: Local file-based database server
