@@ -6,12 +6,16 @@ gem 'econfig'
 gem 'http'
 gem 'activesupport'
 gem 'simplecov'
+gem 'flog'
+gem 'flay'
+gem 'rubocop'
 gem 'weatai', '0.1.7'
 gem 'json'
 gem 'sequel'  #sequel: Our object-relational mapper
+gem 'rake'
 
 group :development, :test do
-	gem 'sqlite3'  #sqlite3: Local file-based database server
+  gem 'sqlite3'  #sqlite3: Local file-based database server
 end
 
 group :development do
@@ -43,8 +47,3 @@ group :production do
 
 
 end
-
-
-
-
-
