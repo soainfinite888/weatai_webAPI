@@ -29,7 +29,7 @@ class WeataiAPI < Sinatra::Base
       content_type 'application/json'
       { #id:         weather., 
         station:    weather.station, 
-        stationName:weather.stationName
+        stationName:weather.stationName,
         city:       weather.city,                       #station's city
         township:   weather.township,                   #station's township
         temperature:weather.temperature,                #station's temperature
