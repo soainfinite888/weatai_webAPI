@@ -8,8 +8,8 @@ class WeataiAPI < Sinatra::Base
     begin
       weather = CWB::INSTANT.instant
       content_type 'application/json'
-      { instant_weather: weather}.to_json
-
+#      { instant_weather: weather}.to_json
+      AllWeatherRepresenter.new(weather).to_json
     rescue
       content_type 'text/plain'
       halt 404, "Instant weather not found"

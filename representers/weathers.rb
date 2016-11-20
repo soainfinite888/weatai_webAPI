@@ -1,5 +1,9 @@
-class AllWeatherRepresenter < Roar::Decorator
-  include Roar::JSON
+class AllWeatherRepresenter
+  def initialize(weathers)
+    @weathers = weathers
+  end
 
-  property :weather
+  def to_json
+    {weathers: @weathers}.to_json
+  end
 end
