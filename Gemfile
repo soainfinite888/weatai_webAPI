@@ -15,6 +15,10 @@ gem 'sequel'  #sequel: Our object-relational mapper
 gem 'rake'
 gem 'roar'
 gem 'multi_json'
+gem 'dry-monads'
+gem 'dry-validation'
+gem 'dry-container'
+gem 'dry-transaction'
 
 group :development, :test do
 	gem 'sqlite3'  #sqlite3: Local file-based database server
@@ -24,7 +28,6 @@ group :development do
   gem 'rerun'  #rerun: Lets us restart our app on any code change
   gem 'tux'  #tux: Local console for interacting with Sinatra app
   gem 'hirb'  #hirb: Shows us pretty database records in tux
-  
   gem 'flog'  
   gem 'flay'
 end
