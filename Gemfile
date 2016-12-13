@@ -21,7 +21,7 @@ gem 'dry-container'
 gem 'dry-transaction'
 
 group :development, :test do
-	gem 'sqlite3'  #sqlite3: Local file-based database server
+  gem 'sqlite3'  #sqlite3: Local file-based database server
 end
 
 group :development do
@@ -52,8 +52,3 @@ group :production do
 
 
 end
-
-
-
-
-

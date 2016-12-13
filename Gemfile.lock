@@ -1,7 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
+<<<<<<< HEAD
     activesupport (4.2.7.1)
+=======
+    activesupport (~> 4.2, >= 4.2.6)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+>>>>>>> master
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
@@ -159,7 +164,11 @@ GEM
     unicode-display_width (1.1.1)
     vcr (3.0.3)
     weatai (0.1.7)
+<<<<<<< HEAD
       activesupport (~> 4.2, >= 4.2.6)
+=======
+      activesupport ((~> 4.2, >= 4.2.6)
+>>>>>>> master
       http (~> 2.0)
     webmock (2.3.1)
       addressable (>= 2.3.6)
