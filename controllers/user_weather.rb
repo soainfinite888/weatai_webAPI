@@ -7,13 +7,12 @@ class WeataiAPI < Sinatra::Base
       body_params = JSON.parse request.body.read
       UserWeather.create(
         location: body_params['location'],
-        weather: body_params['weather'],
         icon_weather: body_params['icon_weather'],
-        icon_wear: body_params['icon_wear'],
-        icon_mood: body_params['icon_mood'],
+        icon_situation: body_params['icon_situation'],
+        icon_side: body_params['icon_side'],
         icon_activity: body_params['icon_activity'],
-        icon_festival: body_params['icon_festival'],
-        icon_situation: body_params['icon_situation']
+        icon_emotion: body_params['icon_emotion'],
+        icon_festival: body_params['icon_festival']
       )
       'success'
     rescue
