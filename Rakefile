@@ -6,6 +6,10 @@ task :default do
   puts `rake -T`
 end
 
+namespace :run do 
+  task :dev do
+    sh 'rerun "rackup -p 9292"'
+end
 
 
 #Rake::TestTask is object creates a test task that can run multiple testing files.
