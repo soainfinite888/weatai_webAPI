@@ -13,6 +13,7 @@ Sequel.migration do
       String :icon_activity
       String :icon_festival
       String :icon_situation
+      Timestamp :upload_time
     end
   end
 end
