@@ -12,7 +12,8 @@ class WeataiAPI < Sinatra::Base
         icon_side: body_params['icon_side'],
         icon_activity: body_params['icon_activity'],
         icon_emotion: body_params['icon_emotion'],
-        icon_festival: body_params['icon_festival']
+        icon_festival: body_params['icon_festival'],
+        upload_time: body_params['upload_time'],
       )
       'success'
     rescue
