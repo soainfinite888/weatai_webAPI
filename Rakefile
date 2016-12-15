@@ -9,6 +9,7 @@ end
 namespace :run do 
   task :dev do
     sh 'rerun "rackup -p 9292"'
+  end
 end
 
 
@@ -74,5 +75,5 @@ namespace :quality do
   task :rubocop do
     sh 'rubocop'
   end
-
+  
 end
