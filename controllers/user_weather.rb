@@ -16,4 +16,7 @@ class WeataiAPI < Sinatra::Base
       halt 400, "User weather could not be saved"
     end
   end
+  get "/#{API_VER}/user_weather/all/?" do
+    all_user_weather = UserWeather.where(:upload_time => (Time.now-7200) .. Time.now).all
+  end
 end
