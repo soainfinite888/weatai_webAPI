@@ -8,4 +8,11 @@ class FindWeather
       Right(weather)
     end
   end
+  
+  def self.async_weather_updates(weathers_repr) 
+  	promised_updates = weathers_repr.FindWeather.map do ||
+      Concurrent::Promise.execute { self.call(stationdid) } 
+    end
+    promised_updates.map(&:value) 
+  end
 end
