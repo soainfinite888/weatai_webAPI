@@ -17,10 +17,9 @@ class WeataiAPI < Sinatra::Base
   get "/#{API_VER}/user_weather/all/?" do
     begin
       all_user_weather = UserWeather.where(:upload_time => (Time.now-7200) .. Time.now).all
-      all_user_weather.to_json
+      AllUserWeatherRepresenter.new(all_user_weather).to_json
     rescue
-      content_type 'text/plain'
-      halt 400, "User weather could not be found"
+      ErrorRepresenter.new(Error.new(:not_found, 'User weather could not be found')).to_status_response
     end
   end
 end
