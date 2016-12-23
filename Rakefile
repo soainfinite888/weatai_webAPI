@@ -77,3 +77,23 @@ namespace :quality do
   end
   
 end
+
+namespace :queue do
+  require 'aws-sdk'
+  require_relative 'init'
+
+  desc "Create SQS queue for Shoryuken"
+  task :create do
+    config = WeataiAPI.config
+    sqs = Aws::SQS::Client.new(region: config.AWS_REGION,
+                               access_key_id: config.AWS_ACCESS_KEY_ID,
+                               secret_access_key: config.AWS_SECRET_ACCESS_KEY)
+
+    begin
+      queue = sqs.create_queue(queue_name: config.Weather_QUEUE)
+      puts "Queue #{config.Weather_QUEUE} created on #{config.AWS_REGION}"
+    rescue => e
+      puts "Error creating queue: #{e}"
+    end
+  end
+end

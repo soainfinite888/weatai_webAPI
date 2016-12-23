@@ -27,23 +27,18 @@ class CreateNewUserWeatherWorker
     }
   end
 
-  FaceGroup::FbApi.config.update(
-    client_id:      CreateNewUserWeatherWorker.config.FB_CLIENT_ID,
-    client_secret:  CreateNewUserWeatherWorker.config.FB_CLIENT_SECRET
-  )
+  CWB::CWBApi.config.update(dataid1: config.DATA_ID1,
+                            dataid2: config.DATA_ID2,
+                            key:     config.AUTH_KEY, 
+                            format:  config.FORMAT,
+                            token:   config.TOKEN)
 
-CWB::CWBApi.config.update(dataid1: config.DATA_ID1,
-                          dataid2: config.DATA_ID2,
-                          key:     config.AUTH_KEY, 
-                          format:  config.FORMAT,
-                          token:   config.TOKEN)
-end
   include Shoryuken::Worker
-  shoryuken_options queue: config.GROUP_QUEUE, auto_delete: true
+  shoryuken_options queue: config.Weather_QUEUE, auto_delete: true
 
   def perform(_sqs_msg, fb_id)
     puts "REQUEST: #{fb_id}"
-    result = CreateNewGroup.call(fb_id)
+    result = CreateUserWeather.call(fb_id)
     puts "RESULT: #{result.value}"
 
     HttpResultRepresenter.new(result.value).to_status_response
