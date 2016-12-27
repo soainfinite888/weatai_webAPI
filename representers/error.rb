@@ -7,8 +7,7 @@ class ErrorRepresenter < Roar::Decorator
 
   ERROR = {
     not_found: 404,
-    internal_server_error: 500,
-    bad_request: 400
+    internal_server_error: 500
   }.freeze
 
   def to_status_response
