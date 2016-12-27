@@ -48,7 +48,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+
   gem 'tux'
   gem 'hirb'
 

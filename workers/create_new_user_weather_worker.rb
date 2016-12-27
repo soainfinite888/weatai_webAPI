@@ -36,9 +36,9 @@ class CreateNewUserWeatherWorker
   include Shoryuken::Worker
   shoryuken_options queue: config.Weather_QUEUE, auto_delete: true
 
-  def perform(_sqs_msg, fb_id)
+  def perform(_sqs_msg, params)
     puts "REQUEST: #{fb_id}"
-    result = CreateUserWeather.call(fb_id)
+    result = CreateUserWeather.call(params)
     puts "RESULT: #{result.value}"
 
     HttpResultRepresenter.new(result.value).to_status_response
