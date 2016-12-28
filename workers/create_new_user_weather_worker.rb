@@ -37,10 +37,16 @@ class CreateNewUserWeatherWorker
   shoryuken_options queue: config.Weather_QUEUE, auto_delete: true
 
   def perform(_sqs_msg, params)
-    puts "REQUEST: #{fb_id}"
-    result = CreateUserWeather.call(params)
-    puts "RESULT: #{result.value}"
+    param = JSON.parse params
+    puts "REQUEST: #{param}"
+#    result = CreateUserWeather.call(params)
+    UserWeather.create(
+                  location: param['location'],
+                  icon: param['icon'],
+                  upload_time: param['upload_time'],
+                  ) 
+#    puts "RESULT: #{result.value}"
 
-    HttpResultRepresenter.new(result.value).to_status_response
+#    HttpResultRepresenter.new(result.value).to_status_response
   end
 end
