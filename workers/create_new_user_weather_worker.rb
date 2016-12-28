@@ -39,13 +39,9 @@ class CreateNewUserWeatherWorker
   def perform(_sqs_msg, params)
     param = JSON.parse params
     puts "REQUEST: #{param}"
-#    result = CreateUserWeather.call(params)
-    UserWeather.create(
-                  location: param['location'],
-                  icon: param['icon'],
-                  upload_time: param['upload_time'],
-                  ) 
-#    puts "RESULT: #{result.value}"
+    result = CreateUserWeather.call(param)
+
+    puts "RESULT: #{result.value}"
 
 #    HttpResultRepresenter.new(result.value).to_status_response
   end
