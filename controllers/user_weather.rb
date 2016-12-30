@@ -6,7 +6,8 @@ class WeataiAPI < Sinatra::Base
     begin
       body_params = JSON.parse request.body.read
       UserWeather.create(
-        location: body_params['location'],
+        lat: body_params['lat'],
+        lng: body_params['lng'],
         icon: body_params['icon'],
         upload_time: body_params['upload_time'],
       )
@@ -16,6 +17,7 @@ class WeataiAPI < Sinatra::Base
       halt 400, "User weather could not be saved"
     end
   end
+
   get "/#{API_VER}/user_weather/all/?" do
     begin
       all_user_weather = UserWeather.where(:upload_time => (Time.now-7200) .. Time.now).all
