@@ -4,6 +4,6 @@ class AllUserWeatherRepresenter
   end
 
   def to_json
-    {user_weathers: @user_weathers}.to_json
+    @user_weathers.to_json
   end
 end
