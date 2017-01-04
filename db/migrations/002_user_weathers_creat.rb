@@ -5,8 +5,8 @@ Sequel.migration do
   change do
     create_table(:user_weathers) do
       primary_key :id 
-      String :lat
-      String :lng
+      String :lat #latitude
+      String :lng #longitude
       String :icon
       Timestamp :upload_time
     end
