@@ -3,16 +3,7 @@
 # routes
 class WeataiAPI < Sinatra::Base
   post "/#{API_VER}/user_weather/?" do
-=begin
-    params = JSON.parse request.body.read
-    result = CreateUserWeather.call(params)
-
-    if result.success?
-      UserWeatherRepresenter.new(result.value).to_json
-    else
-      ErrorRepresenter.new(result.value).to_status_response
-    end
-=end
+    
     params = JSON.parse request.body.read
     res = CreateNewUserWeatherWorker.perform_async(params)
     puts "WORKER: #{res}"
