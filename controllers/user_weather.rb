@@ -3,19 +3,11 @@
 # routes
 class WeataiAPI < Sinatra::Base
   post "/#{API_VER}/user_weather/?" do
-    begin
-      body_params = JSON.parse request.body.read
-      UserWeather.create(
-        lat: body_params['lat'],
-        lng: body_params['lng'],
-        icon: body_params['icon'],
-        upload_time: body_params['upload_time'],
-      )
-      'success'
-    rescue
-      content_type 'text/plain'
-      halt 400, "User weather could not be saved"
-    end
+    
+    params = JSON.parse request.body.read
+    res = CreateNewUserWeatherWorker.perform_async(params)
+    puts "WORKER: #{res}"
+    status 202
   end
 
   get "/#{API_VER}/user_weather/all/?" do

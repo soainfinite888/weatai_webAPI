@@ -19,6 +19,8 @@ gem 'dry-monads'
 gem 'dry-validation'
 gem 'dry-container'
 gem 'dry-transaction'
+gem 'shoryuken'
+gem 'aws-sdk', '~> 2'
 
 group :development, :test do
   gem 'sqlite3'  #sqlite3: Local file-based database server
@@ -46,7 +48,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+
   gem 'tux'
   gem 'hirb'
 
