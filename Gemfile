@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-
-gem 'sinatra', '2.0.0.beta2'
+ruby "2.3.1"
+gem 'sinatra'
 gem 'puma'
 gem 'econfig'
 gem 'http'
@@ -19,6 +19,8 @@ gem 'dry-monads'
 gem 'dry-validation'
 gem 'dry-container'
 gem 'dry-transaction'
+gem 'shoryuken'
+gem 'aws-sdk', '~> 2'
 
 group :development, :test do
   gem 'sqlite3'  #sqlite3: Local file-based database server
