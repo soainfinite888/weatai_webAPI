@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-
-gem 'sinatra', '2.0.0.beta2'
+ruby "2.3.1"
+gem 'sinatra'
 gem 'puma'
 gem 'econfig'
 gem 'http'
@@ -48,7 +48,7 @@ group :test do
 end
 
 group :production do
-
+  gem 'pg'
   gem 'tux'
   gem 'hirb'
 
